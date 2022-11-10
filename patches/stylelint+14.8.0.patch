@@ -1,3 +1,73 @@
+diff --git a/node_modules/stylelint/lib/rules/at-rule-disallowed-list/index.js b/node_modules/stylelint/lib/rules/at-rule-disallowed-list/index.js
+index 9437edb..2542f96 100644
+--- a/node_modules/stylelint/lib/rules/at-rule-disallowed-list/index.js
++++ b/node_modules/stylelint/lib/rules/at-rule-disallowed-list/index.js
+@@ -43,7 +43,8 @@ const rule = (primary) => {
+ 			}
+ 
+ 			report({
+-				message: messages.rejected(name),
++        message: messages.rejected,
++        messageArgs: [name],
+ 				node: atRule,
+ 				result,
+ 				ruleName,
+diff --git a/node_modules/stylelint/lib/rules/declaration-property-unit-disallowed-list/index.js b/node_modules/stylelint/lib/rules/declaration-property-unit-disallowed-list/index.js
+index 13e147b..1e0e8ba 100644
+--- a/node_modules/stylelint/lib/rules/declaration-property-unit-disallowed-list/index.js
++++ b/node_modules/stylelint/lib/rules/declaration-property-unit-disallowed-list/index.js
+@@ -75,7 +75,8 @@ const rule = (primary) => {
+ 				const endIndex = index + node.value.length;
+ 
+ 				report({
+-					message: messages.rejected(prop, unit),
++          message: messages.rejected,
++          messageArgs: [prop, unit],
+ 					node: decl,
+ 					index,
+ 					endIndex,
+diff --git a/node_modules/stylelint/lib/rules/declaration-property-value-allowed-list/index.js b/node_modules/stylelint/lib/rules/declaration-property-value-allowed-list/index.js
+index 59ae2b7..3842ede 100644
+--- a/node_modules/stylelint/lib/rules/declaration-property-value-allowed-list/index.js
++++ b/node_modules/stylelint/lib/rules/declaration-property-value-allowed-list/index.js
+@@ -53,7 +53,8 @@ const rule = (primary) => {
+ 			const endIndex = index + decl.value.length;
+ 
+ 			report({
+-				message: messages.rejected(prop, value),
++        message: messages.rejected,
++        messageArgs: [prop, value],
+ 				node: decl,
+ 				index,
+ 				endIndex,
+diff --git a/node_modules/stylelint/lib/rules/function-disallowed-list/index.js b/node_modules/stylelint/lib/rules/function-disallowed-list/index.js
+index 197c366..1660be7 100644
+--- a/node_modules/stylelint/lib/rules/function-disallowed-list/index.js
++++ b/node_modules/stylelint/lib/rules/function-disallowed-list/index.js
+@@ -50,7 +50,8 @@ const rule = (primary) => {
+ 				const endIndex = index + node.value.length;
+ 
+ 				report({
+-					message: messages.rejected(node.value),
++          message: messages.rejected,
++          messageArgs: [node.value],
+ 					node: decl,
+ 					index,
+ 					endIndex,
+diff --git a/node_modules/stylelint/lib/rules/property-disallowed-list/index.js b/node_modules/stylelint/lib/rules/property-disallowed-list/index.js
+index 6979fe4..1aa389f 100644
+--- a/node_modules/stylelint/lib/rules/property-disallowed-list/index.js
++++ b/node_modules/stylelint/lib/rules/property-disallowed-list/index.js
+@@ -48,7 +48,8 @@ const rule = (primary) => {
+ 			}
+ 
+ 			report({
+-				message: messages.rejected(prop),
++        message: messages.rejected,
++        messageArgs: [prop],
+ 				node: decl,
+ 				result,
+ 				ruleName,
 diff --git a/node_modules/stylelint/lib/utils/checkAgainstRule.js b/node_modules/stylelint/lib/utils/checkAgainstRule.js
 index 83706c5..feda9b8 100644
 --- a/node_modules/stylelint/lib/utils/checkAgainstRule.js
