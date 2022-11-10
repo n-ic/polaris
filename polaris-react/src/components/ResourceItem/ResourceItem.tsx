@@ -19,6 +19,8 @@ import {
   ResourceListSelectedItems,
 } from '../../utilities/resource-list';
 import {globalIdGeneratorFactory} from '../../utilities/unique-id';
+import {Box} from '../Box';
+import {Columns} from '../Columns';
 
 import styles from './ResourceItem.scss';
 
@@ -167,8 +169,8 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         name || accessibilityLabel || i18n.translate('Polaris.Common.checkbox');
 
       handleMarkup = (
-        <div className={styles.Handle} onClick={this.handleLargerSelectionArea}>
-          <div onClick={stopPropagation} className={styles.CheckboxWrapper}>
+        <div onClick={this.handleLargerSelectionArea}>
+          <div onClick={stopPropagation}>
             <div onChange={this.handleLargerSelectionArea}>
               <Checkbox
                 id={this.checkboxId}
@@ -264,10 +266,6 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       }
     }
 
-    const content = children ? (
-      <div className={styles.Content}>{children}</div>
-    ) : null;
-
     const containerClassName = classNames(
       styles.Container,
       verticalAlignment &&
@@ -275,12 +273,21 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     );
 
     const containerMarkup = (
-      <div className={containerClassName} id={this.props.id}>
-        {ownedMarkup}
-        {content}
-        {actionsMarkup}
-        {disclosureMarkup}
-      </div>
+      <Box
+        id={this.props.id}
+        position="relative"
+        paddingBlockStart="3"
+        paddingBlockEnd="3"
+        paddingInlineStart="4"
+        paddingInlineEnd="4"
+      >
+        <Columns columns={{xs: 'auto 1fr auto auto'}}>
+          {ownedMarkup}
+          {children}
+          {actionsMarkup}
+          {disclosureMarkup}
+        </Columns>
+      </Box>
     );
 
     const tabIndex = loading ? -1 : 0;
