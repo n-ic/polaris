@@ -278,6 +278,16 @@ module.exports = {
       },
       depth: {
         'function-disallowed-list': [/([\w-]+\.)?shadow/],
+        'declaration-property-unit-disallowed-list': [
+          {
+            'box-shadow': ['px', 'rem', 'em'],
+          },
+          {severity: 'warning'},
+        ],
+        'property-disallowed-list': [
+          ['text-shadow', 'drop-shadow'],
+          {severity: 'warning'},
+        ],
         'stylelint-polaris/global-disallowed-list': [
           /\$shadows-data/,
           /\$fixed-element-stacking-order/,
