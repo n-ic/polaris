@@ -9,13 +9,15 @@ module.exports = {
     'value-keyword-case': ['lower', {camelCaseSvgKeywords: true}],
   },
   overrides: [
-    {
-      files: ['polaris-react/**/*.{css,scss}'],
-      extends: [
-        '@shopify/stylelint-plugin/prettier',
-        './stylelint-polaris/configs/internal',
-      ],
-    },
+    // TODO: figure out if we need this override, causing config
+    // differences between comment insert config and polaris react stylelint
+    // {
+    //   files: ['polaris-react/**/*.{css,scss}'],
+    //   extends: [
+    //     '@shopify/stylelint-plugin/prettier',
+    //     './stylelint-polaris/configs/internal',
+    //   ],
+    // },
     {
       files: ['polaris-migrator/**/tests/*.{css,scss}'],
       rules: {
